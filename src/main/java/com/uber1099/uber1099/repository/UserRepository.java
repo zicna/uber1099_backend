@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.uber1099.uber1099.pojo.User;
 
 public class UserRepository {
-    //* use private field until we connect our application to database */ 
+    //* use private field for users until we connect our application to database */ 
     // get users, user, delete, update, add 
     private ArrayList<User> users;
 
@@ -16,8 +16,10 @@ public class UserRepository {
     public User getUser(int index){
         return users.get(index);
     }
-
+    
     public void addUser(User user){
+            // here we should create copy of a user passed in
+            // since we will migrate to use database this is not necessary
         users.add(user);
     }
 

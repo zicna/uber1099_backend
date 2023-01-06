@@ -10,6 +10,7 @@ public interface UserServiceImplementation {
     public ArrayList<User> getUsers();
     public void addUser(User user);
     public void deleteUser(int index);
-    public void updateUser(int index);
-
+    public void updateUser(int index, User user);
 }
+
+
