@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.uber1099.uber1099.pojo.User;
-import com.uber1099.uber1099.service.UserService;
+import com.uber1099.uber1099.service.UserServiceImpl;
 
 
 @Controller
 public class UserController {
 
     @Autowired
-    UserService userService;
+    UserServiceImpl userService;
 
     
     @GetMapping("/users")
