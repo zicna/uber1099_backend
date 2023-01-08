@@ -1,6 +1,7 @@
 package com.uber1099.uber1099.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ public class UserService implements UserServiceImplementation {
     }
 
     @Override
-    public ArrayList<User> getUsers() {
+    public List<User> getUsers() {
         return userRepo.getUsers();
     }
 

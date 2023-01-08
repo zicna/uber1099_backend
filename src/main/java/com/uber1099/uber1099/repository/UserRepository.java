@@ -1,6 +1,9 @@
 package com.uber1099.uber1099.repository;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
@@ -9,9 +12,13 @@ import com.uber1099.uber1099.pojo.User;
 public class UserRepository {
     //* use private field for users until we connect our application to database */ 
     // get users, user, delete, update, add 
-    private ArrayList<User> users;
+    // private ArrayList<User> users = new ArrayList<>();
+    private List<User> users = Arrays.asList(
+        new User("john@example.com", "1234", new Date(), "john"),
+        new User("Jack@example.com", "1234", new Date(), "jack")  
+    );
 
-    public ArrayList<User> getUsers(){
+    public List<User> getUsers(){
         return users;
     }
 
