@@ -2,8 +2,10 @@ package com.uber1099.uber1099.repository;
 
 import java.util.ArrayList;
 
-import com.uber1099.uber1099.pojo.User;
+import org.springframework.stereotype.Repository;
 
+import com.uber1099.uber1099.pojo.User;
+@Repository
 public class UserRepository {
     //* use private field for users until we connect our application to database */ 
     // get users, user, delete, update, add 

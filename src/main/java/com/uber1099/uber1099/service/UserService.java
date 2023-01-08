@@ -2,12 +2,15 @@ package com.uber1099.uber1099.service;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.uber1099.uber1099.pojo.User;
 import com.uber1099.uber1099.repository.UserRepository;
-
+@Service
 public class UserService implements UserServiceImplementation {
-
-    UserRepository userRepo = new UserRepository();
+    @Autowired
+    private UserRepository userRepo;
 
     @Override
     public User getUser(int index) {
