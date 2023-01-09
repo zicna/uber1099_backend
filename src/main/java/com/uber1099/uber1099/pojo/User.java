@@ -11,9 +11,9 @@ public class User {
     private Date date_of_birth;
     private String user_name;
 
-    public User(String email, String password, Date date_of_birth, String user_name){
-        this.id = UUID.randomUUID().toString();
-
+    public User(String id, String email, String password, Date date_of_birth, String user_name){
+        // this.id = UUID.randomUUID().toString();
+        this.id = id;
         this.email = email;
         this.password = password;
         this.user_name = user_name;
@@ -21,7 +21,7 @@ public class User {
     }
 
     public User(){
-        this.id = UUID.randomUUID().toString();
+        // this.id = UUID.randomUUID().toString();
     }
 
     public String getId() {
