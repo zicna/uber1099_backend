@@ -14,8 +14,8 @@ public class UserRepository {
     // get users, user, delete, update, add 
     // private ArrayList<User> users = new ArrayList<>();
     private List<User> users = Arrays.asList(
-        new User("john@example.com", "1234", new Date(), "john"),
-        new User("Jack@example.com", "1234", new Date(), "jack")  
+        new User("1","john@example.com", "1234", new Date(), "john"),
+        new User("2", "Jack@example.com", "1234", new Date(), "jack")  
     );
 
     public List<User> getUsers(){
