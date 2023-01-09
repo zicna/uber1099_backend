@@ -12,11 +12,11 @@ import com.uber1099.uber1099.pojo.User;
 public class UserRepository {
     //* use private field for users until we connect our application to database */ 
     // get users, user, delete, update, add 
-    // private ArrayList<User> users = new ArrayList<>();
-    private List<User> users = Arrays.asList(
-        new User("1","john@example.com", "1234", new Date(), "john"),
-        new User("2", "Jack@example.com", "1234", new Date(), "jack")  
-    );
+    private ArrayList<User> users = new ArrayList<>();
+    // private List<User> users = Arrays.asList(
+    //     new User("1","john@example.com", "1234", new Date(), "john"),
+    //     new User("2", "Jack@example.com", "1234", new Date(), "jack")  
+    // );
 
     public List<User> getUsers(){
         return users;
@@ -39,10 +39,4 @@ public class UserRepository {
     public void deleteUser(int index){
         users.remove(index);
     }
-
-
-
-
-
-    
 }

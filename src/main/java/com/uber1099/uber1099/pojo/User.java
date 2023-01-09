@@ -21,6 +21,7 @@ public class User {
     }
 
     public User(){
+        System.out.println("I am being called");
         // this.id = UUID.randomUUID().toString();
     }
 
