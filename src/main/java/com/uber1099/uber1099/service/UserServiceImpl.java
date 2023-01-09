@@ -1,7 +1,7 @@
 package com.uber1099.uber1099.service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,8 +14,8 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepo;
 
     @Override
-    public User getUser(int index) {
-        return userRepo.getUser(index);
+    public User getUserById(String id) {
+        return userRepo.getUser(findIndexById(id));
     }
 
     @Override
@@ -37,5 +37,14 @@ public class UserServiceImpl implements UserService {
     public void updateUser(int index, User user) {
         userRepo.updateUser(index, user);
     }
-    
+
+    private int findIndexById(String id){
+        int ind = IntStream.range(0, userRepo.getUsers().size())
+            .filter(index -> userRepo.getUsers().get(index).getId().equals(id))
+            .findFirst()
+            .orElseThrow();
+
+            System.out.println(ind);
+            return ind;
+    }
 }
