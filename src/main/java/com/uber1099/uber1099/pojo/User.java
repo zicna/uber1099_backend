@@ -1,6 +1,7 @@
 package com.uber1099.uber1099.pojo;
 
 import java.util.Date;
+// * we will not use UUID for creating user ids for better testing with postman
 import java.util.UUID;
 
 public class User {
@@ -12,7 +13,6 @@ public class User {
     private String user_name;
 
     public User(String id, String email, String password, Date date_of_birth, String user_name){
-        // this.id = UUID.randomUUID().toString();
         this.id = id;
         this.email = email;
         this.password = password;
@@ -21,8 +21,6 @@ public class User {
     }
 
     public User(){
-        System.out.println("I am being called");
-        // this.id = UUID.randomUUID().toString();
     }
 
     public String getId() {
