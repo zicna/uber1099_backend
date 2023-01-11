@@ -15,7 +15,7 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepo;
 
     @Override
-    public User getUserById(String id) throws NoUserException {
+    public User getUserById(String id) {
         return userRepo.getUser(findIndexById(id));
     }
 
@@ -30,23 +30,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(String id, User user) throws NoUserException{
+    public void updateUser(String id, User user){
         userRepo.updateUser(findIndexById(id), user);
     }
 
     @Override
-    public void deleteUser(String id) throws NoUserException{
+    public void deleteUser(String id){
         userRepo.deleteUser(findIndexById(id));
     }
 
 
     private int findIndexById(String id){
-        int ind = IntStream.range(0, userRepo.getUsers().size())
+        return IntStream.range(0, userRepo.getUsers().size())
             .filter(index -> userRepo.getUsers().get(index).getId().equals(id))
             .findFirst()
-            .orElseThrow();
-
-            System.out.println(ind);
-            return ind;
+            .orElseThrow(()->  new NoUserException(id));
     }
 }
