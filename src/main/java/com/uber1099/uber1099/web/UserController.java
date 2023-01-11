@@ -4,9 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.uber1099.uber1099.exception.NoUserException;
 import com.uber1099.uber1099.pojo.User;
 import com.uber1099.uber1099.service.UserServiceImpl;
 
@@ -37,9 +36,14 @@ public class UserController {
 
     @GetMapping("/user/{id}")
     public ResponseEntity<User> getUser(@PathVariable String id){
-        System.out.println(id);
-        User user = userService.getUserById(id);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        try {
+            User user = userService.getUserById(id);
+            return new ResponseEntity<>(user, HttpStatus.OK);
+            
+        } catch (NoUserException e) {
+            System.out.println(e.getMessage());
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PostMapping("/user")
@@ -50,14 +54,25 @@ public class UserController {
 
     @PutMapping("/user/{id}")
     public ResponseEntity<User> updateUser(@PathVariable String id, @RequestBody User user){
-        userService.updateUser(id, user);
-        return new ResponseEntity<>(userService.getUserById(id), HttpStatus.OK);
+        try {
+            userService.updateUser(id, user);
+            return new ResponseEntity<>(userService.getUserById(id), HttpStatus.OK);
+            
+        } catch (NoUserException e) {
+            System.out.println(e.getMessage());
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @DeleteMapping ("/user/{id}")
     public ResponseEntity<HttpStatus> deleteUser(@PathVariable String id){
-        userService.deleteUser(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        try {
+            userService.deleteUser(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            
+        } catch (NoUserException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
     
 }

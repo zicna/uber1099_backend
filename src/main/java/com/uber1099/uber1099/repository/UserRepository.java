@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.uber1099.uber1099.exception.NoUserException;
 import com.uber1099.uber1099.pojo.User;
 @Repository
 public class UserRepository {
@@ -22,7 +23,7 @@ public class UserRepository {
         return users;
     }
 
-    public User getUser(int index){
+    public User getUser(int index) throws NoUserException{
         return users.get(index);
     }
     
@@ -32,11 +33,11 @@ public class UserRepository {
         users.add(user);
     }
 
-    public void updateUser(int index, User user){
+    public void updateUser(int index, User user) throws NoUserException{
         users.set(index, user);
     }
 
-    public void deleteUser(int index){
+    public void deleteUser(int index) throws NoUserException{
         users.remove(index);
     }
 }
