@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -44,6 +45,12 @@ public class UserController {
     public ResponseEntity<HttpStatus> saveUser(@RequestBody User user){
         userService.saveUser(user);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PutMapping("/user/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable String id, @RequestBody User user){
+        userService.updateUser(id, user);
+        return new ResponseEntity<>(userService.getUserById(id), HttpStatus.OK);
     }
     
 }

@@ -29,14 +29,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void updateUser(String id, User user) {
+        userRepo.updateUser(findIndexById(id), user);
+    }
+    
+    @Override
     public void deleteUser(int index) {
         userRepo.deleteUser(index);
     }
 
-    @Override
-    public void updateUser(int index, User user) {
-        userRepo.updateUser(index, user);
-    }
 
     private int findIndexById(String id){
         int ind = IntStream.range(0, userRepo.getUsers().size())
