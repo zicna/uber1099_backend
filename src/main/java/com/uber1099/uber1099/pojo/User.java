@@ -4,11 +4,22 @@ import java.util.Date;
 // * we will not use UUID for creating user ids for better testing with postman
 import java.util.UUID;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
+// import javax.validation.constraints.*;
+
 public class User {
     
     private String id;
+
+    @NotBlank(message = "email can not be blank")
+    @Email
     private String email;
+    
     private String password;
+
+    @NotBlank(message = "dob can not be empty")
     private Date date_of_birth;
     private String user_name;
 

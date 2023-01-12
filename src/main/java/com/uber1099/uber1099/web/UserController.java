@@ -2,9 +2,12 @@ package com.uber1099.uber1099.web;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.uber1099.uber1099.exception.NoUserException;
 import com.uber1099.uber1099.pojo.User;
 import com.uber1099.uber1099.service.UserServiceImpl;
+
 
 
 
@@ -41,13 +45,13 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    public ResponseEntity<HttpStatus> saveUser(@RequestBody User user){
+    public ResponseEntity<HttpStatus> saveUser( @RequestBody User user){
         userService.saveUser(user);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping("/user/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable String id, @RequestBody User user){
+    public ResponseEntity<User> updateUser(@PathVariable String id, @Valid @RequestBody User user){
         userService.updateUser(id, user);
         return new ResponseEntity<>(userService.getUserById(id), HttpStatus.OK);
     }
