@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.uber1099.uber1099.exception.NoUserException;
 import com.uber1099.uber1099.pojo.User;
-import com.uber1099.uber1099.service.UserServiceImpl;
+import com.uber1099.uber1099.service.user.UserServiceImpl;
 
 
 
