@@ -6,7 +6,7 @@ public class Trip{
 // * primary key 
 private String id;
 // * foreing key 
-private String driver_id;
+private String user_id;
 // * foreing key 
 private String rider_id;
 private Float distance; 
@@ -17,9 +17,9 @@ private Integer duration;
 // * LIFT / UBER only options
 private String provider; 
 
-public Trip(String id, String driver_id, String rider_id, Float distance, Float net_fare, Float tip, String provider){
+public Trip(String id, String user_id, String rider_id, Float distance, Float net_fare, Float tip, String provider){
     this.id = id;
-    this.driver_id = driver_id;
+    this.user_id = user_id;
     this.rider_id = rider_id;
     this.distance = distance;
     this.net_fare = net_fare;
@@ -33,8 +33,8 @@ public Trip(){}
 public String getId() {
     return id;
 }
-public String getDriver_id() {
-    return driver_id;
+public String getuser_id() {
+    return user_id;
 }
 public String getRider_id() {
     return rider_id;
@@ -59,8 +59,8 @@ public Float getTip() {
 public void setDistance(Float distance) {
     this.distance = distance;
 }
-public void setDriver_id(String driver_id) {
-    this.driver_id = driver_id;
+public void setuser_id(String user_id) {
+    this.user_id = user_id;
 }
 public void setDuration(Integer duration) {
     this.duration = duration;
