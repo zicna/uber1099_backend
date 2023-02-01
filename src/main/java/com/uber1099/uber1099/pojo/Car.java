@@ -1,8 +1,12 @@
 package com.uber1099.uber1099.pojo;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+
 public class Car {
     
     private String id;
+    @NotEmpty(message = "car must belog to user")
     private String user_id;
     private String make;
     private String model;
